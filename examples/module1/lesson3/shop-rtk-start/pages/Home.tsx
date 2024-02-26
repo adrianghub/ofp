@@ -1,9 +1,32 @@
-import { useContext } from 'react';
 import Product from '../components/Product';
-import { ProductContext } from '../contexts/ProductContext';
+import { useGetProductsQuery } from '../services/products';
 
 const Home = () => {
-  const { products } = useContext(ProductContext);
+  const { data: products, error, isLoading } = useGetProductsQuery();
+
+  if (isLoading) {
+    return (
+      <section className="h-screen flex justify-center items-center">
+        Loading...
+      </section>
+    );
+  }
+
+  if (error instanceof Error) {
+    return (
+      <section className="h-screen flex justify-center items-center">
+        Error: {error.message}
+      </section>
+    );
+  }
+
+  if (!products) {
+    return (
+      <section className="h-screen flex justify-center items-center">
+        No data
+      </section>
+    );
+  }
 
   return (
     <div>
