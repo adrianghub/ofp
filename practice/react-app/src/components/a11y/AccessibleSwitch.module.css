@@ -1,0 +1,34 @@
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.switch {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background: grey;
+  border-radius: 10px;
+  position: relative;
+}
+
+.switch.checked {
+  background: green;
+}
+
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: left 0.2s;
+}
+
+.knob.checked {
+  left: 22px;
+}
