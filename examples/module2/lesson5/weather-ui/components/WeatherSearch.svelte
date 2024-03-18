@@ -3,7 +3,7 @@
   import { LocationWeather } from '../models/LocationWeather';
   import WeatherPreview from './WeatherPreview.svelte';
 
-  let weather: LocationWeather;
+  let weather: LocationWeather | null;
 
   async function onLocationChange(event: KeyboardEvent) {
     const locationQuery = (event.target as HTMLInputElement).value;
@@ -11,6 +11,8 @@
       const result = await fetchWeather(locationQuery);
       if (result) {
         weather = result;
+      } else {
+        weather = null;
       }
     } catch {
       console.error(`Failed to fetch weather for ${locationQuery}`);

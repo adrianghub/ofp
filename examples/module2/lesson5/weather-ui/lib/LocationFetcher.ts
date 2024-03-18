@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { LocationWeather } from '../models/LocationWeather';
-import { parseLocation } from './LocationParser';
 import { WeatherRequest } from '../models/WeatherRequest';
+import { parseLocation } from './LocationParser';
 
 async function getWeatherData(
   request: WeatherRequest
