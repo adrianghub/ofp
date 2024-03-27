@@ -1,6 +1,5 @@
-# Wymagana jest unikalna nazwa bucketu w ramach całego AWS
 resource "aws_s3_bucket" "ofe_bucket" {
-  bucket = "ofe-rmcatalog"
+  bucket = var.features_bucket_name
 }
 
 resource "aws_s3_bucket_ownership_controls" "ofe_bucket_ownership" {
@@ -39,7 +38,7 @@ resource "aws_s3_bucket_policy" "ofe_bucket_policy" {
         "Effect" : "Allow",
         "Principal" : "*",
         "Action" : "s3:GetObject",
-        "Resource" : "arn:aws:s3:::ofe-rmcatalog/*"
+        "Resource" : "arn:aws:s3:::${var.features_bucket_name}/*"
       }
     ]
   })
